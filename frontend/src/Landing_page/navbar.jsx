@@ -50,8 +50,7 @@ function Navbar() {
               <img
             src="media/images/coin.svg"
             style={{ width: "25px", height: "20px" }}
-            alt="Logo"
-          />
+            alt="Logo"/>
                 MedCoins
               </Link>
             </li>
