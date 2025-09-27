@@ -195,7 +195,7 @@ function Footer() {
               <div className="emergency-contact">
                 <span className="emergency-label">Medical Emergency:</span>
                 <a href="tel:102" className="emergency-number">
-                  <i className="fas fa-phone-alt"></i>
+                <i class="fa-solid fa-phone"></i>
                   Call 102
                 </a>
               </div>

@@ -241,6 +241,8 @@ const Signup = () => {
     <div className="signup-page">
       <div className="signup-container">
         <div className="logo">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThTFwsC_EBZJ1-XJred62hZBW_RRC3KXQ1zA&s" 
+                    style={{height:"60px"}}></img>
           <h1>MedShai</h1>
           <p>Join Our Healthcare Platform</p>
         </div>

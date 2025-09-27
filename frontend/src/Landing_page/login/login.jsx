@@ -37,8 +37,10 @@ const Login = () => {
               {/* Header Section */}
               <div className="text-center medical-cross-wrapper">
                 <div>
-                  <div className="medical-cross">
+                  <div className="medical p-3">
                     <span className="cross-horizontal"></span>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThTFwsC_EBZJ1-XJred62hZBW_RRC3KXQ1zA&s" 
+                    style={{height:"60px"}}></img>
                     <span className="cross-vertical"></span>
                   </div>
                 </div>
@@ -114,7 +116,7 @@ const Login = () => {
                   type="submit" 
                   className="custom-btn"
                 >
-                  🏥 Sign In
+                   Sign In
                 </button>
               </form>
 
