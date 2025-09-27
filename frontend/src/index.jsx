@@ -8,6 +8,8 @@ import Notfound from './Landing_page/notfound.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import Loginpage from './Landing_page/login/loginpage.jsx';
+import Signuppage from './Landing_page/signup/singnupage.jsx';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,6 +18,8 @@ root.render(
   <Navbar />
     <Routes>
       <Route path="/" element={<Homepage />} />
+      <Route path='/login' element={<Loginpage />} />
+      <Route path='/signup' element={<Signuppage />} />
       <Route path="*" element={<Notfound />} />
     </Routes>
     <Footer />
