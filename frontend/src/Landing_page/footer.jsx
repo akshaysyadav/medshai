@@ -57,7 +57,6 @@ function Footer() {
                     alt="MedSahi Logo" 
                     className="footer-logo"
                   />
-                  <h5 className="brand-name">MedSahi</h5>
                 </div>
                 <p className="footer-description">
                   Your trusted healthcare companion providing smart, eco-friendly medical solutions 
