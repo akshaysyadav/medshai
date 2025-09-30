@@ -1,0 +1,49 @@
+/* MedCoins page background to match Hero wavy green flow */
+
+.medcoins-section {
+  background: linear-gradient(135deg, #e8f5e8 0%, #ffffff 40%, #f0f8f0 100%);
+  position: relative;
+}
+
+.medcoins-animated-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(40, 167, 69, 0.05) 50%, transparent 70%);
+  animation: medcoinsGradientShift 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes medcoinsGradientShift {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
+.medcoins-wave-bg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 160px;
+  z-index: 0;
+}
+
+.medcoins-waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 160px;
+  animation: medcoinsWave 6s ease-in-out infinite;
+}
+
+@keyframes medcoinsWave {
+  0%, 100% { transform: translateX(0px); }
+  50% { transform: translateX(-20px); }
+}
+
+.medcoins-content {
+  position: relative;
+  z-index: 2;
+}
+
+
