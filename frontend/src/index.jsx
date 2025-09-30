@@ -11,6 +11,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Loginpage from './Landing_page/login/loginpage.jsx';
 import Signuppage from './Landing_page/signup/singnupage.jsx';
+import MedCoinspage from './Landing_page/medcoins/medcoinspage.jsx';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -21,6 +22,8 @@ root.render(
       <Route path="/" element={<Homepage />} />
       <Route path='/login' element={<Loginpage />} />
       <Route path='/signup' element={<Signuppage />} />
+      <Route path='/medcoins' element={<MedCoinspage />} />
+      
       <Route path="*" element={<Notfound />} />
     </Routes>
     <Footer />
