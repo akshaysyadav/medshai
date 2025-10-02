@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./footer.css";
+import ScrollToTopLink from "../ScrollToTop";
 
 function Footer() {
   const currentYear = new Date().getFullYear();
+  const [showButton, setShowButton] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
     <footer className="healthcare-footer">
       {/* Newsletter Section */}
@@ -84,12 +97,12 @@ function Footer() {
               <div className="footer-section">
                 <h6 className="footer-title">Services</h6>
                 <ul className="footer-links">
-                  <li><Link to="/find-medicines">Find Medicines</Link></li>
-                  <li><Link to="/lab-tests">Lab Tests</Link></li>
-                  <li><Link to="/consult-doctors">Online Consultation</Link></li>
-                  <li><Link to="/medcoins">MedCoins Rewards</Link></li>
-                  <li><Link to="/pharmacy">Online Pharmacy</Link></li>
-                  <li><Link to="/health-packages">Health Packages</Link></li>
+                  <li><ScrollToTopLink to="/find-medicines">Find Medicines</ScrollToTopLink></li>
+                  <li><ScrollToTopLink to="/lab-tests">Lab Tests</ScrollToTopLink></li>
+                  <li><ScrollToTopLink to="/consult-doctors">Online Consultation</ScrollToTopLink></li>
+                  <li><ScrollToTopLink to="/medcoins">MedCoins Rewards</ScrollToTopLink></li>
+                  <li><ScrollToTopLink to="/pharmacy">Online Pharmacy</ScrollToTopLink></li>
+                  <li><ScrollToTopLink to="/health-packages">Health Packages</ScrollToTopLink></li>
                 </ul>
               </div>
             </div>
@@ -226,7 +239,7 @@ function Footer() {
       </div>
 
       {/* Back to Top Button */}
-      <button className="back-to-top" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
+      <button className={`bact-to-top ${showButton ? "visible" : ""}`} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
         <i className="fas fa-chevron-up"></i>
       </button>
     </footer>
