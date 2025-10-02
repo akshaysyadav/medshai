@@ -16,7 +16,7 @@ import MedCoinspage from './Landing_page/medcoins/medcoinspage.jsx';
 import ScrollToTop from './ScrollToTop.jsx';
 
 import Consultpage from './Landing_page/consultdoctor/consultpage.jsx';
-
+import FindMedpage from './Landing_page/findmed/findmedpage.jsx';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -26,6 +26,7 @@ root.render(
       <Route path="/" element={<Homepage />} />
       <Route path='/login' element={<Loginpage />} />
       <Route path='/signup' element={<Signuppage />} />
+      <Route path='/find-medicines' element={<FindMedpage />} />
       <Route path='/consult-doctors' element={<Consultpage />} />
       <Route path='/medcoins' element={<MedCoinspage />} />
       
