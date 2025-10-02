@@ -12,7 +12,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import Loginpage from './Landing_page/login/loginpage.jsx';
 import Signuppage from './Landing_page/signup/singnupage.jsx';
 import MedCoinspage from './Landing_page/medcoins/medcoinspage.jsx';
-
+import Consultpage from './Landing_page/consultdoctor/consultpage.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,6 +22,7 @@ root.render(
       <Route path="/" element={<Homepage />} />
       <Route path='/login' element={<Loginpage />} />
       <Route path='/signup' element={<Signuppage />} />
+      <Route path='/consult-doctors' element={<Consultpage />} />
       <Route path='/medcoins' element={<MedCoinspage />} />
       
       <Route path="*" element={<Notfound />} />

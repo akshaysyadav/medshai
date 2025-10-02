@@ -44,7 +44,7 @@ const Login = () => {
                     <span className="cross-vertical"></span>
                   </div>
                 </div>
-                <h2 className="brand-name">MedShai</h2>
+                <h2 className="brand-name">MedSahi</h2>
                 <p className="brand-tagline">Your Healthcare Companion</p>
               </div>
 
