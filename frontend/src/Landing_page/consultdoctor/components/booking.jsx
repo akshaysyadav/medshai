@@ -48,7 +48,7 @@ const BookingModal = ({ doctor, consultationType, isOpen, onClose, onConfirmBook
   const isFormValid = selectedDate && selectedTime && patientName && patientAge && agreedToTerms;
 
   return (
-    <div className="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center p-3" role="dialog" aria-modal="true">
+    <div className="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center p-3 mt-5" role="dialog" aria-modal="true">
       <div className="bg-white rounded shadow w-100" style={{ maxWidth: '720px', maxHeight: '90vh', overflowY: 'auto' }}>
         <div className="d-flex align-items-center justify-content-between p-3 border-bottom">
           <div>
