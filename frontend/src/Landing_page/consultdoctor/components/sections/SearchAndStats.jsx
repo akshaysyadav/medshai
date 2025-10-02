@@ -1,5 +1,5 @@
 import React from 'react';
-import { useConsultDoctor } from '../ConsultDoctorContext';
+import { useConsultDoctor } from '../../ConsultDoctorContext';
 
 export default function SearchAndStats() {
   const { availableDoctorsCount } = useConsultDoctor();

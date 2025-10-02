@@ -1,7 +1,7 @@
 import React from 'react';
-import { useConsultDoctor } from '../ConsultDoctorContext';
-import SpecializationFilter from '../specialization';
-import DoctorCard from '../doctorcard';
+import { useConsultDoctor } from '../../ConsultDoctorContext';
+import SpecializationFilter from '../ui/specialization';
+import DoctorCard from '../ui/doctorcard';
 
 export default function DoctorsSection() {
   const {

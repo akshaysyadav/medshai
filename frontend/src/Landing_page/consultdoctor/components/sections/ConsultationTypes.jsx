@@ -1,6 +1,6 @@
 import React from 'react';
-import { useConsultDoctor } from '../ConsultDoctorContext';
-import ConsultationTypeCard from '../consulationtypecard';
+import { useConsultDoctor } from '../../ConsultDoctorContext';
+import ConsultationTypeCard from '../ui/consulationtypecard';
 
 export default function ConsultationTypes() {
   const { consultationTypes, selectedType, setSelectedType } = useConsultDoctor();

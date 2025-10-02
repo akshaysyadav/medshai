@@ -1,12 +1,12 @@
 import React from 'react';
 import { ConsultDoctorProvider, useConsultDoctor } from './ConsultDoctorContext';
-import Hero from './sections/Hero';
-import SearchAndStats from './sections/SearchAndStats';
-import ConsultationTypes from './sections/ConsultationTypes';
-import DoctorsSection from './sections/DoctorsSection';
-import InstantConsultBanner from './instantconsultation';
-import Booking from './booking';
-import DoctorProfile from './doctorprofile';
+import Hero from './components/sections/Hero';
+import SearchAndStats from './components/sections/SearchAndStats';
+import ConsultationTypes from './components/sections/ConsultationTypes';
+import DoctorsSection from './components/sections/DoctorsSection';
+import InstantConsultBanner from './components/ui/instantconsultation';
+import Booking from './components/ui/booking';
+import DoctorProfile from './components/ui/doctorprofile';
 
 function InnerApp() {
   const { availableDoctorsCount, setSelectedType, bookingDoctor, setBookingDoctor, profileDoctor, setProfileDoctor } = useConsultDoctor();
