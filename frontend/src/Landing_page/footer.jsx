@@ -1,23 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React  from "react";
 import { Link } from "react-router-dom";
 import "./footer.css";
 import ScrollToTopLink from "../ScrollToTop";
 
 function Footer() {
   const currentYear = new Date().getFullYear();
-  const [showButton, setShowButton] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 200) {
-        setShowButton(true);
-      } else {
-        setShowButton(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  
+  
   return (
     <footer className="healthcare-footer">
       {/* Newsletter Section */}
@@ -239,7 +228,7 @@ function Footer() {
       </div>
 
       {/* Back to Top Button */}
-      <button className={`bact-to-top ${showButton ? "visible" : ""}`} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
+      <button className={`bact-to-top`} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
         <i className="fas fa-chevron-up"></i>
       </button>
     </footer>
