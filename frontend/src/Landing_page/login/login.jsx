@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './login.css'; // Import the external CSS file
+import { login } from '../../services/api';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,8 @@ const Login = () => {
   });
 
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState({ type: '', text: '' });
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -18,11 +21,40 @@ const Login = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Login attempt:', formData);
-    // Add your login logic here
-    alert(`Login attempt for: ${formData.email}. Remember me: ${formData.rememberMe}`);
+    setIsLoading(true);
+    setMessage({ type: '', text: '' });
+
+    try {
+      const response = await login(formData);
+      
+      if (response.token) {
+        // Toast notification will be shown automatically by the API interceptor
+        setMessage({ type: 'success', text: 'Login successful! Redirecting...' });
+        
+        // Redirect based on user role
+        setTimeout(() => {
+          const user = JSON.parse(localStorage.getItem('user'));
+          if (user.roles.includes('ADMIN')) {
+            window.location.href = '/admin-dashboard';
+          } else if (user.roles.includes('PHARMACIST')) {
+            window.location.href = '/pharmacist-dashboard';
+          } else {
+            window.location.href = '/';
+          }
+        }, 1500);
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      // Toast notification will be shown automatically by the API interceptor
+      setMessage({ 
+        type: 'error', 
+        text: error.message || error || 'Login failed. Please check your credentials.' 
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -47,6 +79,13 @@ const Login = () => {
                 <h2 className="brand-name">MedSahi</h2>
                 <p className="brand-tagline">Your Healthcare Companion</p>
               </div>
+
+              {/* Message Display */}
+              {message.text && (
+                <div className={`alert ${message.type === 'success' ? 'alert-success' : 'alert-danger'}`} role="alert">
+                  {message.text}
+                </div>
+              )}
 
               {/* Form Content */}
               <form onSubmit={handleSubmit} style={{marginBottom: '1.5rem'}}>
@@ -115,8 +154,9 @@ const Login = () => {
                 <button 
                   type="submit" 
                   className="custom-btn"
+                  disabled={isLoading}
                 >
-                   Sign In
+                  {isLoading ? 'Signing In...' : 'Sign In'}
                 </button>
               </form>
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './signup.css';
+import { registerUser, registerAdmin, registerPharmacist } from '../../services/api';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -7,6 +8,7 @@ const Signup = () => {
     email: '',
     phone: '',
     userType: '',
+    licenseNumber: '',
     password: '',
     confirmPassword: '',
     terms: false,
@@ -166,24 +168,40 @@ const Signup = () => {
     setMessage({ type: '', text: '' });
 
     try {
-      // Simulate API call - replace with actual API endpoint
-      const response = await mockApiCall('signup', formData);
+      let response;
+      
+      // Call appropriate registration API based on user type
+      switch (formData.userType) {
+        case 'admin':
+          response = await registerAdmin(formData);
+          break;
+        case 'pharmacist':
+          // For pharmacist, we need license number
+          if (!formData.licenseNumber) {
+            setErrors({ licenseNumber: 'License number is required for pharmacists' });
+            setIsLoading(false);
+            return;
+          }
+          response = await registerPharmacist(formData);
+          break;
+        default:
+          response = await registerUser(formData);
+      }
 
-      if (response.success) {
-        setMessage({ type: 'success', text: 'Account created successfully! Please check your email for verification.' });
-        
-        // Store pending user data
-        localStorage.setItem('medshaiPendingUser', JSON.stringify(response.user));
-        
-        // Redirect to email verification
+      if (response.message) {
+        // Toast notification will be shown automatically by the API interceptor
+        // Redirect to login page after successful registration
         setTimeout(() => {
-          window.location.href = '/verify-email'; // Replace with your routing logic
+          window.location.href = '/login';
         }, 2000);
-      } else {
-        setMessage({ type: 'error', text: response.message || 'Signup failed' });
       }
     } catch (error) {
-      setMessage({ type: 'error', text: 'Network error. Please try again.' });
+      console.error('Registration error:', error);
+      // Toast notification will be shown automatically by the API interceptor
+      setMessage({ 
+        type: 'error', 
+        text: error.message || error || 'Registration failed. Please try again.' 
+      });
     } finally {
       setIsLoading(false);
     }
@@ -204,26 +222,6 @@ const Signup = () => {
     alert('Privacy Policy would be displayed here');
   };
 
-  // Mock API call - replace with actual implementation
-  const mockApiCall = (endpoint, data) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        // Simulate successful signup
-        resolve({
-          success: true,
-          user: {
-            id: Date.now(),
-            name: data.name,
-            email: data.email,
-            phone: data.phone,
-            userType: data.userType,
-            verified: false,
-            createdAt: new Date().toISOString()
-          }
-        });
-      }, 1500);
-    });
-  };
 
   const userTypeOptions = [
     { value: '', label: 'Select your role' },
@@ -314,6 +312,23 @@ const Signup = () => {
             </select>
             {errors.userType && <span className="error-text">{errors.userType}</span>}
           </div>
+
+          {formData.userType === 'pharmacist' && (
+            <div className="form-group">
+              <label htmlFor="licenseNumber">License Number</label>
+              <input
+                type="text"
+                id="licenseNumber"
+                name="licenseNumber"
+                value={formData.licenseNumber}
+                onChange={handleInputChange}
+                className={errors.licenseNumber ? 'error' : ''}
+                placeholder="Enter your pharmacy license number"
+                disabled={isLoading}
+              />
+              {errors.licenseNumber && <span className="error-text">{errors.licenseNumber}</span>}
+            </div>
+          )}
 
           <div className="form-group">
             <label htmlFor="password">Password</label>
