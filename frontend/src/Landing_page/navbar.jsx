@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ScrollToTopLink from "../ScrollToTop";
+import "./navbar.css";
 
 const primaryGreen = '#2d7d32';
 const secondaryGreen = '#4caf50';
@@ -8,12 +9,12 @@ const hoverDarkGreen = '#1b5e20';
 
 function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
-      <div className="container p-2">
-        <ScrollToTopLink className="navbar-brand d-flex align-items-center" to="/">
+    <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top  ">
+      <div className="container-fluid px-3 py-1 mx-4">
+        <ScrollToTopLink className="navbar-brand d-flex align-items-center" to="/" >
         <img
             src="media/images/logo.png"
-            style={{ width: "100px", height: "40px" }}
+            style={{  height: "50px" }}
             alt="Logo"
           />
         </ScrollToTopLink>
@@ -32,26 +33,46 @@ function Navbar() {
         
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0 p-2">
+
+          <li className="nav-item mx-4 "> 
+            <ScrollToTopLink className="nav-link fw-medium text-custom-dark" to="/" style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+              <img
+                src="media/images/home.svg"
+                style={{ width: "25px", height: "19px" }}
+                alt="Logo"
+              />
+              Home
+            </ScrollToTopLink>
+          </li>
             <li className="nav-item mx-4">
-              <ScrollToTopLink className="nav-link fw-medium text-dark" to="/find-medicines">
-                <i className="fas fa-search me-1"></i>
+              <ScrollToTopLink className="nav-link fw-medium text-custom-dark" to="/find-medicines" style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+                <img
+            src="media/images/search.svg"
+            style={{ width: "25px", height: "20px" }}
+            alt="Logo"/>
                 Find Medicines
               </ScrollToTopLink>
             </li>
             <li className="nav-item mx-4">
-              <ScrollToTopLink className="nav-link fw-medium text-dark" to="/lab-tests">
-                <i className="fas fa-vial me-1"></i>
+              <ScrollToTopLink className="nav-link fw-medium text-custom-dark" to="/lab-tests" style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+                <img
+            src="media/images/test-tube.svg"
+            style={{ width: "25px", height: "20px" }}
+            alt="Logo"/>
                 Lab Tests
               </ScrollToTopLink>
             </li>
             <li className="nav-item mx-4">
-              <ScrollToTopLink className="nav-link fw-medium text-dark" to="/consult-doctors">
-                <i className="fas fa-user-md me-1"></i>
+              <ScrollToTopLink className="nav-link fw-medium text-custom-dark" to="/consult-doctors" style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+                <img
+            src="media/images/stethoscope.svg"
+            style={{ width: "25px", height: "20px" }}
+            alt="Logo"/>
                 Consult Doctors
               </ScrollToTopLink>
             </li>
             <li className="nav-item mx-4">
-              <ScrollToTopLink className="nav-link fw-medium text-dark" to="/medcoins">
+              <ScrollToTopLink className="nav-link fw-medium text-custom-dark" to="/medcoins" style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
               <img
             src="media/images/coin.svg"
             style={{ width: "25px", height: "20px" }}

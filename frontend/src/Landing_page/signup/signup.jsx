@@ -3,8 +3,7 @@ import './signup.css';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+    name: '',
     email: '',
     phone: '',
     userType: '',
@@ -90,8 +89,7 @@ const Signup = () => {
     const newErrors = {};
 
     // Required field validation
-    if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
-    if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required';
+    if (!formData.name.trim()) newErrors.name = 'Name is required';
     if (!formData.email.trim()) newErrors.email = 'Email is required';
     if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
     if (!formData.userType) newErrors.userType = 'Please select your role';
@@ -215,8 +213,7 @@ const Signup = () => {
           success: true,
           user: {
             id: Date.now(),
-            firstName: data.firstName,
-            lastName: data.lastName,
+            name: data.name,
             email: data.email,
             phone: data.phone,
             userType: data.userType,
@@ -254,36 +251,19 @@ const Signup = () => {
         )}
 
         <form className="signup-form" onSubmit={handleSubmit}>
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="firstName">First Name</label>
-              <input
-                type="text"
-                id="firstName"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleInputChange}
-                className={errors.firstName ? 'error' : ''}
-                placeholder="Enter first name"
-                disabled={isLoading}
-              />
-              {errors.firstName && <span className="error-text">{errors.firstName}</span>}
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="lastName">Last Name</label>
-              <input
-                type="text"
-                id="lastName"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleInputChange}
-                className={errors.lastName ? 'error' : ''}
-                placeholder="Enter last name"
-                disabled={isLoading}
-              />
-              {errors.lastName && <span className="error-text">{errors.lastName}</span>}
-            </div>
+          <div className="form-group">
+            <label htmlFor="name">Full Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              className={errors.name ? 'error' : ''}
+              placeholder="Enter your full name"
+              disabled={isLoading}
+            />
+            {errors.name && <span className="error-text">{errors.name}</span>}
           </div>
 
           <div className="form-group">
